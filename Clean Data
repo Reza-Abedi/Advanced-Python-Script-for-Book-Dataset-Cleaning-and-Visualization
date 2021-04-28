@@ -31,7 +31,7 @@ import matplotlib.pyplot as plt
 def remove_non_ascii(text):
     return ''.join(i for i in text if ord(i) < 128)
 
-df_book = pd.read_excel(r"C:\Users\reza\Desktop\PY\Uppgifter\books.xlsx")
+df_book = pd.read_excel("dataset/input/books.xlsx")
 df_book.head()
 to_drop = ['Edition Statement', 'Corporate Author', 'Corporate Contributors',
            'Former owner', 'Engraver', 'Contributors', 'Issuance type', 'Shelfmarks']
@@ -150,7 +150,7 @@ def clean_author_names(item):
 #final cleaning and dropping na
 df_book['Author'] = df_book.apply(clean_author_names, axis=1)
 df_book.drop('Date Extracted From PP', axis=1, inplace=True)
-df_book.to_excel(r"C:\Users\reza\Desktop\PY\Uppgifter\bookedd.xlsx", index=False)
+df_book.to_excel('dataset/clean/book_cleaned.xlsx', index=False)
 print('\nNote: Clean Dataset is saved under: dataset/clean/book_cleaned.xlsx')
 #print(df_book.isna().sum()) #-> It checks sum  of na value in each column
 
